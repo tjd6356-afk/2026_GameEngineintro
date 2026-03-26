@@ -6,14 +6,14 @@ public class adadadad : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       Debug.Log("¾È³çÇÏ¼¼¿ä? " + playername);
-       Debug.LogError("¾È³çÇÏ¼¼¿ä?? "+ playername);
-       Debug.LogWarning("¾È³çÇÏ¼¼¿ä??? "+ playername);
+    //    Debug.Log("ï¿½È³ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½? " + playername);
+    //    Debug.LogError("ï¿½È³ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½?? "+ playername);
+    //    Debug.LogWarning("ï¿½È³ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½??? "+ playername);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(12345);
+        // Debug.Log(12345);
     }
 }
