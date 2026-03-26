@@ -7,7 +7,10 @@ public class botton : MonoBehaviour
     {
         SceneManager.LoadScene("PlayScene_Door1");
     }
-
+public void Gametitle()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
     public void OpenHelp()
     {
         helpPeael.SetActive(true);
