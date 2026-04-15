@@ -2,59 +2,45 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class player_controller : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    private Vector2 moveInput;
-    public float moveSpeed = 7f;
-    public float jumpFoerce = 7f;
-    private Rigidbody2D rb;
-    private Animator myAnimator;
+    public float moveSpeed = 5f;
+    public float jumpForce = 5f;
+    public Transform groundCheck;
+    public LayerMask groundLayer;
 
-   
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Rigidbody2D rb;
+    private bool isGrounded;
+    private float moveInput;
+
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        myAnimator = GetComponent<Animator>();
-        myAnimator.SetBool("move", false);
     }
 
-     public void OnMove(InputValue value)
-    {
-        moveInput = value.Get<Vector2>();
-    }
+   private void Update()
+   {
+        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
-    public void OnJump(InputValue value)
-    {
-        if (value.isPressed)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpFoerce);
-        }
-    }
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+   }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(moveInput.x > 0)
-        {
-            transform.localScale = new Vector3(1,1,1);
-        }
-        else if(moveInput.x < 0)
-        {
-            transform.localScale = new Vector3(-1,1,1);
-        }
+   public void OnMove(InputValue value)
+   {
+        Vector2 input = value.Get<Vector2>();
+        moveInput = input.x;
+   }
 
-        if(moveInput.magnitude > 0)
+   public void OnJump(InputValue value)
+   {
+        if (value.isPressed && isGrounded)
         {
-            myAnimator.SetBool("move", true);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-        else
-        {
-            myAnimator.SetBool("move", false);
-        }
-        transform.Translate(Vector3.right * moveSpeed * moveInput.x * Time.deltaTime);
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
+   }
+
+   private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Death")
         {
@@ -66,4 +52,3 @@ public class player_controller : MonoBehaviour
         }
     }
 }
-
