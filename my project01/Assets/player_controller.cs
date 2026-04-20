@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
+    private SpriteRenderer spriteRenderer;
     public Transform groundCheck;
     public LayerMask groundLayer;
 
@@ -22,7 +23,9 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
+    
 
    private void Update()
    {
@@ -43,6 +46,7 @@ public class PlayerController : MonoBehaviour
         }
 
         wasGrounded = isGrounded; // 상태 업데이트
+        
    }
 
    public void OnMove(InputValue value)
