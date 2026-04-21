@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 5f;
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public bool isInvincible = false;
 
     [Header("Stun Settings")]
     public float landStunTime = 3f;  // 착지 시 멈춤 시간
@@ -21,12 +22,14 @@ public class PlayerController : MonoBehaviour
     private float moveInput;
 
     private Vector3 originalScale;
+    private float originalSpeed;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         originalScale = transform.localScale;
+        originalSpeed = moveSpeed; // 게임 시작 시 원래 속도 저장
     }
     
 
@@ -95,8 +98,33 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(duration);
         canMove = true;
     }
+    public void ApplyPowerUp(float duration, float speedMultiplier)
+    {
+        StartCoroutine(PowerUpRoutine(duration, speedMultiplier));
+    }
+    // 일정 시간 동안만 효과가 지속되게 하는 코루틴
+    private IEnumerator PowerUpRoutine(float duration, float speedMultiplier)
+    {
+        Debug.Log("파워업 시작! 무적 + 속도 증가");
 
-   private void OnTriggerEnter2D(Collider2D collision)
+        isInvincible = true;
+        moveSpeed *= speedMultiplier;
+
+        // 시각적 피드백 (예: 캐릭터 색상을 반짝이게 변경)
+        GetComponent<SpriteRenderer>().color = Color.blue;
+
+        // duration(초)만큼 대기
+        yield return new WaitForSeconds(duration);
+
+        // 효과 원상복구
+        isInvincible = false;
+        moveSpeed = originalSpeed;
+        GetComponent<SpriteRenderer>().color = Color.white;
+
+        Debug.Log("파워업 종료!");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Respawn"))
         {
