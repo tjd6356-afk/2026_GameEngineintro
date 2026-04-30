@@ -7,7 +7,7 @@ public class botton : MonoBehaviour
     {
         SceneManager.LoadScene("PlayScene_Door1");
     }
-public void Gametitle()
+    public void Gametitle()
     {
         SceneManager.LoadScene("TitleScene");
     }
