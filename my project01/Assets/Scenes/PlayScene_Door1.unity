@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 13087978}
   m_Layer: 0
   m_Name: Door2
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -686,6 +686,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  isInvincible: 0
   landStunTime: 3
 --- !u!4 &370800841
 Transform:
@@ -1955,7 +1956,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b607a18bcc62b1d4ba808ffa7dc5761b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  helpPeael: {fileID: 0}
+  reloadPanel: {fileID: 0}
+  helpPanel: {fileID: 0}
 --- !u!4 &688932186
 Transform:
   m_ObjectHideFlags: 0
@@ -23072,7 +23074,7 @@ GameObject:
   - component: {fileID: 1771797422}
   m_Layer: 0
   m_Name: Door1
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

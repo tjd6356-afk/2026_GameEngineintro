@@ -2620,7 +2620,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b607a18bcc62b1d4ba808ffa7dc5761b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  helpPeael: {fileID: 0}
+  reloadPanel: {fileID: 0}
+  helpPanel: {fileID: 0}
 --- !u!4 &937280326
 Transform:
   m_ObjectHideFlags: 0
@@ -3286,7 +3287,7 @@ GameObject:
   - component: {fileID: 1474506944}
   m_Layer: 0
   m_Name: Door3
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4355,7 +4356,7 @@ GameObject:
   - component: {fileID: 2081159533}
   m_Layer: 0
   m_Name: Door4
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

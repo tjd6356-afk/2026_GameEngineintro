@@ -138,6 +138,16 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene("PlayScene_" + collision.name);
         }
 
+        if (collision.CompareTag("Finish"))
+        {
+            highScore.TrySet(SceneManager.GetActiveScene().buildIndex,(int)Score);
+        }
+
+        if (collision.CompareTag("Item"))
+        {
+            Score += 10f;
+        }
+
         if (collision.CompareTag("Enemy"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
