@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class botton : MonoBehaviour
 {
-    public GameObject helpPeael;
+    public GameObject reloadPanel;
+    public GameObject helpPanel;
     public void GameStart()
     {
         SceneManager.LoadScene("PlayScene_Door1");
@@ -13,11 +14,21 @@ public class botton : MonoBehaviour
     }
     public void OpenHelp()
     {
-        helpPeael.SetActive(true);
+        helpPanel.SetActive(true);
     }
 
     public void CloseHelp()
     {
-        helpPeael.SetActive(false);
+        helpPanel.SetActive(false);
+    }
+
+        public void OpenRelaod()
+    {
+        reloadPanel.SetActive(true);
+    }
+
+    public void CloseRelaod()
+    {
+        reloadPanel.SetActive(false);
     }
 }

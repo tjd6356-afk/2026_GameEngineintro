@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     private bool canMove = true;       // 이동 가능 여부 플래그
     private float moveInput;
 
+    float Score;
+
     private Vector3 originalScale;
     private float originalSpeed;
 
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         originalScale = transform.localScale;
         originalSpeed = moveSpeed; // 게임 시작 시 원래 속도 저장
+        Score = 0f;
     }
     
 
